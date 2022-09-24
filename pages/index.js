@@ -1,8 +1,52 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Button, Grid, Loading, Card, Text, Link, Row } from "@nextui-org/react";
 
 export default function Home() {
+  const list = [
+    {
+      title: "Orange",
+      img: "/images/fruit-1.jpeg",
+      price: "$5.50",
+    },
+    {
+      title: "Tangerine",
+      img: "/images/fruit-2.jpeg",
+      price: "$3.00",
+    },
+    {
+      title: "Raspberry",
+      img: "/images/fruit-3.jpeg",
+      price: "$10.00",
+    },
+    {
+      title: "Lemon",
+      img: "/images/fruit-4.jpeg",
+      price: "$5.30",
+    },
+    {
+      title: "Advocato",
+      img: "/images/fruit-5.jpeg",
+      price: "$15.70",
+    },
+    {
+      title: "Lemon 2",
+      img: "/images/fruit-6.jpeg",
+      price: "$8.00",
+    },
+    {
+      title: "Banana",
+      img: "/images/fruit-7.jpeg",
+      price: "$7.50",
+    },
+    {
+      title: "Watermelon",
+      img: "/images/fruit-8.jpeg",
+      price: "$12.20",
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +65,120 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <div className={styles.grid}>
+        <Grid.Container gap={2}>
+      <Grid>
+        <Button shadow color="primary" auto>
+          Primary<Loading color="currentColor" size="sm" />
+        </Button>
+      </Grid>
+      <Grid>
+        <Button shadow color="secondary" auto>
+          Secondary
+        </Button>
+      </Grid>
+      <Grid>
+        <Button shadow color="success" auto>
+          Success
+        </Button>
+      </Grid>
+      <Grid>
+        <Button shadow color="warning" auto>
+          Warning
+        </Button>
+      </Grid>
+      <Grid>
+        <Button shadow color="error" auto>
+          Error
+        </Button>
+      </Grid>
+      <Grid>
+        <Button shadow color="gradient" auto>
+          Gradient
+        </Button>
+      </Grid>
+    </Grid.Container>
+
+    <Card css={{ p: "$6", mw: "400px" }}>
+      <Card.Header>
+        <img
+          alt="nextui logo"
+          src="https://github.com/btbf/spojapanguild/blob/9184a65078831624b0707e2b3463b7977f782ca5/docs/images/favicon.png"
+          width="34px"
+          height="34px"
+        />
+        <Grid.Container css={{ pl: "$6" }}>
+          <Grid xs={12}>
+            <Text h4 css={{ lineHeight: "$xs" }}>
+              SPO JAPAN GUILD
+            </Text>
+          </Grid>
+          <Grid xs={12}>
+            <Text css={{ color: "$accents8" }}>nextui.org</Text>
+          </Grid>
+        </Grid.Container>
+      </Card.Header>
+      <Card.Body css={{ py: "$2" }}>
+        <Text>
+          Make beautiful websites regardless of your design experience.
+        </Text>
+      </Card.Body>
+      <Card.Footer>
+        <Link
+          icon
+          color="error"
+          target="_blank"
+          href="https://github.com/449sabu"
+        >
+          Visit source code on GitHub.
+        </Link>
+      </Card.Footer>
+    </Card>
+
+    <Grid.Container gap={2}>
+      <Grid>
+        <Loading color="primary">Primary</Loading>
+      </Grid>
+      <Grid>
+        <Loading color="secondary">Secondary</Loading>
+      </Grid>
+      <Grid>
+        <Loading color="success">Success</Loading>
+      </Grid>
+      <Grid>
+        <Loading color="warning">Warning</Loading>
+      </Grid>
+      <Grid>
+        <Loading color="error">Error</Loading>
+      </Grid>
+    </Grid.Container>
+
+    <Grid.Container gap={2} justify="flex-start">
+      {list.map((item, index) => (
+        <Grid xs={6} sm={3} key={index}>
+          <Card isPressable>
+            <Card.Body css={{ p: 0 }}>
+              <Card.Image
+                src={"https://nextui.org" + item.img}
+                objectFit="cover"
+                width="100%"
+                height={140}
+                alt={item.title}
+              />
+            </Card.Body>
+            <Card.Footer css={{ justifyItems: "flex-start" }}>
+              <Row wrap="wrap" justify="space-between" align="center">
+                <Text b>{item.title}</Text>
+                <Text css={{ color: "$accents7", fontWeight: "$semibold", fontSize: "$sm" }}>
+                  {item.price}
+                </Text>
+              </Row>
+            </Card.Footer>
+          </Card>
+        </Grid>
+      ))}
+    </Grid.Container>
+    
+        {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -31,25 +188,7 @@ export default function Home() {
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
